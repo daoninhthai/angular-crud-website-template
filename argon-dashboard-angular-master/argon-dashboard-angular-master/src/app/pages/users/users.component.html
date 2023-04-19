@@ -141,9 +141,9 @@
                       <i class="fas fa-ellipsis-v"></i>
                     </a>
                     <div ngbDropdownMenu class=" dropdown-menu-right dropdown-menu-arrow">
-                      <a class="dropdown-item" href="#" [routerLink]="['/users/', user.id, 'view']">View</a>
+                      <a class="dropdown-item" [routerLink]="[ user.id, 'view']">View</a>
                       <a class="dropdown-item" href="#" [routerLink]="['/users/', user.id, 'edit']">Edit</a>
-                      <a class="dropdown-item" href="#" [routerLink]="['/users/', user.id, 'view']">Something else here</a>
+                      <a class="dropdown-item" href="#" [routerLink]="['/users/', 'create']">Something else here</a>
                       <!-- <button type="button" (click)="deletePost(post.id)" class="btn btn-danger">Delete</button> -->
                     </div>
                   </div>
@@ -156,3 +156,5 @@
     </div>
   </div>
 </div>
+
+<router-outlet></router-outlet>

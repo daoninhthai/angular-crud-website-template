@@ -7,11 +7,12 @@ import { UsersService } from '../users.service';
   styleUrls: ['./users.component.scss']
 })
 export class UsersComponent implements OnInit {
-  users: UsersComponent[] = [];
+
+  users = [];
   constructor(public usersService: UsersService) { }
 
   ngOnInit(): void {
-    this.usersService.getAll().subscribe((data: UsersComponent[])=>{
+    this.usersService.getAll().subscribe((data: any)=>{
       this.users = data;
       console.log(this.users);
     })  

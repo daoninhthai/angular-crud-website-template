@@ -8,10 +8,19 @@ import { TablesComponent } from '../../pages/tables/tables.component';
 import { UsersComponent } from 'src/app/pages/users/users.component';
 
 export const AdminLayoutRoutes: Routes = [
-    { path: 'dashboard',      component: DashboardComponent },
-    { path: 'users',          component: UsersComponent },
+    {
+        path: '',
+        children: [
+          {
+            path: '',
+            loadChildren: () => import('src/app/pages/users/users.module').then(m => m.UsersModule)
+          }
+        ]
+      },
     { path: 'user-profile',   component: UserProfileComponent },
     { path: 'tables',         component: TablesComponent },
     { path: 'icons',          component: IconsComponent },
-    { path: 'maps',           component: MapsComponent }
+    { path: 'maps',           component: MapsComponent },
+    { path: 'dashboard',      component: DashboardComponent },
+
 ];

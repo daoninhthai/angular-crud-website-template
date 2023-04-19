@@ -75,7 +75,7 @@ public class UserController {
 
     @ApiOperation(value = "Update user", response = UserDTO.class)
     @ApiResponses({@ApiResponse(code = 404, message = "No user found"), @ApiResponse(code = 500, message = "")})
-    @PutMapping("/users/{id}")
+    @PutMapping(value="/users/{id}", consumes={MediaType.APPLICATION_JSON_VALUE})
     public ResponseEntity<?> updateUser(@Valid @RequestBody UpdateUserRequest request, @PathVariable int id) {
         UserDTO result = userService.updateUser(request, id);
         return ResponseEntity.ok(result);

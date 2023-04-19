@@ -1,0 +1,280 @@
+<div class="header bg-gradient-danger pb-8 pt-5 pt-md-8">
+    <div class="container-fluid">
+      <div class="header-body">
+        <!-- Card stats -->
+        <div class="row">
+          <div class="col-xl-3 col-lg-6">
+            <div class="card card-stats mb-4 mb-xl-0">
+              <div class="card-body">
+                <div class="row">
+                  <div class="col">
+                    <h5 class="card-title text-uppercase text-muted mb-0">Traffic</h5>
+                    <span class="h2 font-weight-bold mb-0">350,897</span>
+                  </div>
+                  <div class="col-auto">
+                    <div class="icon icon-shape bg-danger text-white rounded-circle shadow">
+                      <i class="fas fa-chart-bar"></i>
+                    </div>
+                  </div>
+                </div>
+                <p class="mt-3 mb-0 text-muted text-sm">
+                  <span class="text-success mr-2"><i class="fa fa-arrow-up"></i> 3.48%</span>
+                  <span class="text-nowrap">Since last month</span>
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="col-xl-3 col-lg-6">
+            <div class="card card-stats mb-4 mb-xl-0">
+              <div class="card-body">
+                <div class="row">
+                  <div class="col">
+                    <h5 class="card-title text-uppercase text-muted mb-0">New users</h5>
+                    <span class="h2 font-weight-bold mb-0">2,356</span>
+                  </div>
+                  <div class="col-auto">
+                    <div class="icon icon-shape bg-warning text-white rounded-circle shadow">
+                      <i class="fas fa-chart-pie"></i>
+                    </div>
+                  </div>
+                </div>
+                <p class="mt-3 mb-0 text-muted text-sm">
+                  <span class="text-danger mr-2"><i class="fas fa-arrow-down"></i> 3.48%</span>
+                  <span class="text-nowrap">Since last week</span>
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="col-xl-3 col-lg-6">
+            <div class="card card-stats mb-4 mb-xl-0">
+              <div class="card-body">
+                <div class="row">
+                  <div class="col">
+                    <h5 class="card-title text-uppercase text-muted mb-0">Sales</h5>
+                    <span class="h2 font-weight-bold mb-0">924</span>
+                  </div>
+                  <div class="col-auto">
+                    <div class="icon icon-shape bg-yellow text-white rounded-circle shadow">
+                      <i class="fas fa-users"></i>
+                    </div>
+                  </div>
+                </div>
+                <p class="mt-3 mb-0 text-muted text-sm">
+                  <span class="text-warning mr-2"><i class="fas fa-arrow-down"></i> 1.10%</span>
+                  <span class="text-nowrap">Since yesterday</span>
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="col-xl-3 col-lg-6">
+            <div class="card card-stats mb-4 mb-xl-0">
+              <div class="card-body">
+                <div class="row">
+                  <div class="col">
+                    <h5 class="card-title text-uppercase text-muted mb-0">Performance</h5>
+                    <span class="h2 font-weight-bold mb-0">49,65%</span>
+                  </div>
+                  <div class="col-auto">
+                    <div class="icon icon-shape bg-info text-white rounded-circle shadow">
+                      <i class="fas fa-percent"></i>
+                    </div>
+                  </div>
+                </div>
+                <p class="mt-3 mb-0 text-muted text-sm">
+                  <span class="text-success mr-2"><i class="fas fa-arrow-up"></i> 12%</span>
+                  <span class="text-nowrap">Since last month</span>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="container-fluid mt--7">
+    <!-- Dark table -->
+    <div class="row mt-5">
+      <div class="col">
+        <div class="card bg-default shadow">
+          <div class="card-header bg-transparent border-0">
+            <h3 class="text-white mb-0">Edit User</h3>
+          </div>
+          <div class="table-responsive">
+<div class="col-xl-12 order-xl-1">
+    <div class="card bg-secondary shadow">
+        <form [formGroup]="form" (ngSubmit)="submit()">
+      <div class="card-header bg-white border-0">
+        <div class="row align-items-center">
+          <div class="col-8">
+            <h3 class="mb-0">My account</h3>
+          </div>
+          <div class="col-4 text-right">
+            <button class="btn btn-primary" type="submit" [disabled]="!form.valid">Update</button>
+          </div>
+        </div>
+      </div>
+      
+        
+          <h6 class="heading-small text-muted mb-4">User information</h6>
+          <div class="pl-lg-4">
+            <div class="row">
+              <div class="col-lg-6">
+                <div class="form-group">
+                  <label class="form-control-label" for="input-username">Username</label>
+                  <input readonly id="input-username" class="form-control form-control-alternative" placeholder="Username"  formControlName="username"
+                  id="username" 
+                  type="text" 
+                  [(ngModel)]="user.username"
+                  class="form-control" >
+                  <div *ngIf="f.username.touched && f.username.invalid" class="alert alert-danger">
+                    <div *ngIf="f.username.errors?.required">Username is required.</div>
+                </div>
+                </div>
+              </div>
+              <div class="col-lg-6">
+                <div class="form-group">
+                  <label class="form-control-label" for="input-dob">Date of birth</label>
+                  <input id="input-dob" class="form-control form-control-alternative"  formControlName="dob"
+                  type="date" 
+                  [(ngModel)]="user.dob"
+                  class="form-control">
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-lg-6">
+                <div class="form-group">
+                  <label class="form-control-label" for="input-first-name">First name</label>
+                  <input  id="input-first-name" class="form-control form-control-alternative" placeholder="First name" formControlName="first_name"
+                  type="text" 
+                  [(ngModel)]="user.firstName"
+                  class="form-control" readonly>
+                  
+                </div>
+
+              </div>
+              <div class="col-lg-6">
+                <div class="form-group">
+                  <label class="form-control-label" for="input-last-name">Last name</label>
+                  <input  id="input-last-name" class="form-control form-control-alternative" placeholder="Last name" formControlName="last_name" 
+                  type="text" 
+                  [(ngModel)]="user.lastName"
+                  class="form-control" readonly >
+        
+                </div>
+              </div>
+            </div>
+          </div>
+          <hr class="my-4" />
+          <!-- Address -->
+          <h6 class="heading-small text-muted mb-4">Contact information</h6>
+          <div class="pl-lg-4">
+            <div class="row">
+              <div class="col-md-12">
+                <div class="form-group">
+                  <label class="form-control-label" for="input-location">Address</label>
+                  <input id="input-location" class="form-control form-control-alternative" placeholder="Home Address" 
+                  formControlName="location" 
+                  type="text" 
+                  [(ngModel)]="user.location"
+                  class="form-control" readonly>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-lg-6">
+                <div class="form-group">
+                  <label class="form-control-label" for="input-city">Gender</label>
+                  <input  id="input-gender" class="form-control form-control-alternative" placeholder="Gender" 
+                  formControlName="gender" 
+                  type="text" 
+                  [(ngModel)]="user.gender"
+                  class="form-control">
+                </div>
+              </div>
+              <div class="col-lg-6">
+                <div class="form-group">
+                  <label class="form-control-label" for="input-joinedDate">Joined date</label>
+                  <input  id="input-joinedDate" class="form-control form-control-alternative"
+                  formControlName="joined_date" 
+                  type="date" 
+                  [(ngModel)]="user.joinedDate"
+                  class="form-control">
+                  
+                </div>
+              </div>
+            <!-- hidden -->
+            <div class="col-lg-6">
+              <div class="form-group">
+                
+                <input  id="input-gender" class="form-control form-control-alternative" placeholder="Gender" 
+                formControlName="status" 
+                type="text" 
+                [(ngModel)]="user.status"
+                class="form-control" hidden>
+              </div>
+            </div>
+            <div class="col-lg-6">
+              <div class="form-group">
+                
+                <input  id="input-gender" class="form-control form-control-alternative" placeholder="Gender" 
+                formControlName="password" 
+                type="text" 
+                [(ngModel)]="user.password"
+                class="form-control" hidden>
+              </div>
+            </div>
+            <div class="col-lg-6">
+              <div class="form-group">
+                
+                <input  id="input-gender" class="form-control form-control-alternative" placeholder="Gender" 
+                formControlName="authority" 
+                type="text" 
+                [(ngModel)]="user.authority"
+                class="form-control" hidden>
+              </div>
+            </div>
+            <div class="col-lg-6">
+              <div class="form-group">
+                
+                <input  id="input-gender" class="form-control form-control-alternative" placeholder="Gender" 
+                formControlName="staff_code" 
+                type="text" 
+                [(ngModel)]="user.staffCode"
+                class="form-control" hidden>
+              </div>
+            </div>
+            <div class="col-lg-6">
+              <div class="form-group">
+                
+                <input  id="input-gender" class="form-control form-control-alternative" placeholder="Gender" 
+                formControlName="default_password" 
+                type="text" 
+                [(ngModel)]="user.defaultPassword"
+                class="form-control" hidden>
+              </div>
+            </div>
+            <div class="col-lg-6">
+              <div class="form-group">
+                
+                <input  id="input-gender" class="form-control form-control-alternative" placeholder="Gender" 
+                formControlName="first_login" 
+                type="text" 
+                [(ngModel)]="user.firstLogin"
+                class="form-control" hidden>
+              </div>
+            </div>
+          </div>
+            
+          </div>
+          
+        
+        </form>
+      </div>
+    </div>
+  </div>
+  <div>.</div>
+</div>
+</div>
+</div>
+</div>

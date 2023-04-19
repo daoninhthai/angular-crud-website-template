@@ -10,9 +10,10 @@ import { UsersComponent } from './users/users.component';
 })
 export class UsersService {
 
-  headers_object = new HttpHeaders().set("Authorization", "Bearer " + localStorage.getItem('token'));
-     
+  headers_object = new HttpHeaders({'Content-Type': 'application/json',"Authorization": "Bearer " + localStorage.getItem('token')});
+  
   httpOptions = {
+    
     headers: this.headers_object
   }
    
@@ -29,7 +30,8 @@ export class UsersService {
      
   create(users:UsersComponent): Observable<any> {
 
-    return this.httpClient.post(`${baseUrl}users/`, JSON.stringify(users), this.httpOptions)
+    return this.httpClient.post(`${baseUrl}users/`, JSON.stringify(users), {headers: this.headers_object,
+      responseType: "json"})
 
     .pipe(
       catchError(this.errorHandler)
@@ -37,7 +39,8 @@ export class UsersService {
   }  
      
   find(id:number): Observable<any> {
-
+    console.log(123);
+    
     return this.httpClient.get(`${baseUrl}users/` + id)
 
     .pipe(
@@ -47,15 +50,18 @@ export class UsersService {
      
   update(id:number, users:UsersComponent): Observable<any> {
 
-    return this.httpClient.put(`${baseUrl}users/`  + id, JSON.stringify(users), this.httpOptions)
+    return this.httpClient.put(`${baseUrl}users/`  + id, JSON.stringify(users), {headers: this.headers_object,
+      responseType: "json"})
 
     .pipe(
       catchError(this.errorHandler)
     )
   }
      
+ 
   delete(id:number){
-    return this.httpClient.delete(`${baseUrl}users/` + id, this.httpOptions)
+    return this.httpClient.delete(`${baseUrl}users/` + id, {headers: this.headers_object,
+      responseType: "json"})
 
     .pipe(
       catchError(this.errorHandler)
