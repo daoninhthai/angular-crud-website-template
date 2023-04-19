@@ -98,7 +98,9 @@
     <div class="col">
       <div class="card bg-default shadow">
         <div class="card-header bg-transparent border-0">
-          <h3 class="text-white mb-0">Users</h3>
+          <span class="header-table"><h3 class="text-white mb-0">Users</h3>
+            <a  href="#" [routerLink]="['/users/', 'create']">Create new user</a>
+          </span>
         </div>
         <div class="table-responsive">
           <table class="table align-items-center table-dark table-flush">
@@ -123,7 +125,7 @@
                       <img alt="Image placeholder" src="../assets/img/theme/bootstrap.jpg">
                     </a>
                     <div class="media-body">
-                      <span class="mb-0 text-sm">Argon Design System</span>
+                      <span class="mb-0 text-sm">{{ user.staffCode }}-{{ user.username}}</span>
                     </div>
                   </div>
                 </th>
@@ -143,8 +145,7 @@
                     <div ngbDropdownMenu class=" dropdown-menu-right dropdown-menu-arrow">
                       <a class="dropdown-item" [routerLink]="[ user.id, 'view']">View</a>
                       <a class="dropdown-item" href="#" [routerLink]="['/users/', user.id, 'edit']">Edit</a>
-                      <a class="dropdown-item" href="#" [routerLink]="['/users/', 'create']">Something else here</a>
-                      <!-- <button type="button" (click)="deletePost(post.id)" class="btn btn-danger">Delete</button> -->
+                      <a class="dropdown-item" href="#" (click)="changeStatusUser(user.id)">Disable user</a>
                     </div>
                   </div>
                 </td>
@@ -152,6 +153,7 @@
             </tbody>
           </table>
         </div>
+
       </div>
     </div>
   </div>

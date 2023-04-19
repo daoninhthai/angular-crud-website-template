@@ -17,11 +17,10 @@ export class UsersComponent implements OnInit {
       console.log(this.users);
     })  
   }
-  // deleteUser(id:number){
-  //   this.usersService.delete(id).subscribe(res => {
-  //        this.users = this.users.filter(item => item.id !== id);
-  //        console.log('User deleted successfully!');
-  //   })
-  // }
+  changeStatusUser(id:number){
+    this.usersService.changeStatus(id).subscribe(res => {
+         this.users = this.users.filter(item => item.id !== id);
+    })
+  }
 
 }

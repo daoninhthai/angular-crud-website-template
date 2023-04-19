@@ -59,8 +59,10 @@ export class UsersService {
   }
      
  
-  delete(id:number){
-    return this.httpClient.delete(`${baseUrl}users/` + id, {headers: this.headers_object,
+  changeStatus(id:number){
+    
+    
+    return this.httpClient.put(`${baseUrl}users/status/` + id, {headers: this.headers_object,
       responseType: "json"})
 
     .pipe(
