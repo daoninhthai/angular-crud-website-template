@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { UsersService } from '../users.service';
 
@@ -7,7 +8,7 @@ import { UsersService } from '../users.service';
   styleUrls: ['./users.component.scss']
 })
 export class UsersComponent implements OnInit {
-
+  private router: Router
   users = [];
   constructor(public usersService: UsersService) { }
 
@@ -19,7 +20,7 @@ export class UsersComponent implements OnInit {
   }
   changeStatusUser(id:number){
     this.usersService.changeStatus(id).subscribe(res => {
-         this.users = this.users.filter(item => item.id !== id);
+      window.location.reload();
     })
   }
 

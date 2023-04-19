@@ -145,7 +145,7 @@
                     <div ngbDropdownMenu class=" dropdown-menu-right dropdown-menu-arrow">
                       <a class="dropdown-item" [routerLink]="[ user.id, 'view']">View</a>
                       <a class="dropdown-item" href="#" [routerLink]="['/users/', user.id, 'edit']">Edit</a>
-                      <a class="dropdown-item" href="#" (click)="changeStatusUser(user.id)">Disable user</a>
+                      <a class="dropdown-item"  (click)="changeStatusUser(user.id)">Disable user</a>
                     </div>
                   </div>
                 </td>

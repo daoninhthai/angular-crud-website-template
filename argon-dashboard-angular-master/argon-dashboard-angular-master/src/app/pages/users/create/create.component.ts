@@ -40,7 +40,7 @@ export class CreateComponent implements OnInit {
     this.usersService.create(this.form.value).subscribe(res => {
          console.log(this.form.value);
          
-         this.router.navigateByUrl('user');
+         this.router.navigate(["users"]);
     })
   }
 
