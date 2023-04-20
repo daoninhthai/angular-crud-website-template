@@ -10,20 +10,13 @@ import com.company.assetmanagementwebservice.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import com.company.assetmanagementwebservice.model.dto.UserDTO;
 import com.company.assetmanagementwebservice.model.request.UpdateUserRequest;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
+import org.springframework.web.multipart.MultipartFile;
 
 
 @RestController
@@ -97,6 +90,13 @@ public class UserController {
     public ResponseEntity<?> changeUserPassword(@Valid @RequestBody ChangePasswordRequest request, @PathVariable String username) {
         UserDTO result = userService.changePassword(request, username);
         return ResponseEntity.ok(result);
+    }
+    //ko chay dc
+    @PostMapping("/users/import")
+    public ResponseEntity<?> importTransactionsFromExcelToDb(@RequestParam(name = "files", required = false) List<MultipartFile> files) {
+
+        userService.importToDb(files);
+        return ResponseEntity.ok("ok");
     }
 
 

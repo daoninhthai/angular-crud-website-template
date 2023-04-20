@@ -7,6 +7,7 @@ import com.company.assetmanagementwebservice.model.dto.UserDTO;
 import com.company.assetmanagementwebservice.model.request.ChangePasswordRequest;
 import com.company.assetmanagementwebservice.model.request.CreateUserRequest;
 import com.company.assetmanagementwebservice.model.request.UpdateUserRequest;
+import org.springframework.web.multipart.MultipartFile;
 
 @Service
 public interface UserService {
@@ -30,6 +31,6 @@ public interface UserService {
 
   UserDTO changePassword(ChangePasswordRequest request, String username);
 
-
+  void importToDb(List<MultipartFile> multipartfiles);
 
 }

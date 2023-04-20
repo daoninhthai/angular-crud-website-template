@@ -32,7 +32,7 @@ export class LoginComponent implements OnInit, OnDestroy {
           console.log(result);
           
           localStorage.setItem ('token', result.jwttoken);
-          this.router.navigateByUrl('../dashboard');
+          this.router.navigate(["users"]);
         }
         else{
           console.log('fail');

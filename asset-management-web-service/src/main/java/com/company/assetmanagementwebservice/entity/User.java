@@ -7,6 +7,7 @@ import java.util.List;
 
 @Getter
 @Setter
+@Builder(toBuilder = true)
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
@@ -75,5 +76,26 @@ public class User {
         this.username=username2;
         this.password=password;
         this.authority=authorities;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", username='" + username + '\'' +
+                ", password='" + password + '\'' +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", dob=" + dob +
+                ", gender='" + gender + '\'' +
+                ", joinedDate=" + joinedDate +
+                ", location='" + location + '\'' +
+                ", status='" + status + '\'' +
+                ", staffCode='" + staffCode + '\'' +
+                ", authority=" + authority +
+                ", assignments=" + assignments +
+                ", firstLogin='" + firstLogin + '\'' +
+                ", defaultPassword='" + defaultPassword + '\'' +
+                '}';
     }
 }

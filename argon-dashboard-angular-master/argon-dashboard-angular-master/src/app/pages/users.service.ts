@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpEvent, HttpHeaders, HttpRequest } from '@angular/common/http';
    
 import {  Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
@@ -11,6 +11,7 @@ import { UsersComponent } from './users/users.component';
 export class UsersService {
 
   headers_object = new HttpHeaders({'Content-Type': 'application/json',"Authorization": "Bearer " + localStorage.getItem('token')});
+  headers_object1 = new HttpHeaders({"Authorization": "Bearer " + localStorage.getItem('token')});
   
   httpOptions = {
     
@@ -71,6 +72,25 @@ export class UsersService {
   }
     
     
+
+  upload(file: File): Observable<HttpEvent<any>> {
+    const formData: FormData = new FormData();
+
+    formData.append('file', file);
+
+    const req = new HttpRequest('POST', `${baseUrl}excel/upload`, formData, {
+      headers: this.headers_object1,
+      reportProgress: true,
+      responseType: 'json'
+    });
+
+    return this.httpClient.request(req);
+  }
+
+  getFiles(): Observable<any> {
+    return this.httpClient.get(`${baseUrl}/files`);
+  }
+
   errorHandler(error:any) {
     let errorMessage = '';
     if(error.error instanceof ErrorEvent) {

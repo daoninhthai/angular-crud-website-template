@@ -8,11 +8,12 @@ import { EditComponent } from './edit/edit.component';
   
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { usersRouter } from './users.routing';
+import { UploadComponent } from './upload/upload.component';
 
 
   
 @NgModule({
-  declarations: [ ViewComponent, CreateComponent, EditComponent],
+  declarations: [ ViewComponent, CreateComponent, EditComponent, UploadComponent],
   imports: [
     CommonModule,
     FormsModule,
