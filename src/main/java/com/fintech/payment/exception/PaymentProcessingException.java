@@ -6,6 +6,7 @@ public class PaymentProcessingException extends RuntimeException {
         super(message);
     }
 
+
     public PaymentProcessingException(String message, Throwable cause) {
         super(message, cause);
     }

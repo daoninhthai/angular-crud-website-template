@@ -2,6 +2,7 @@ package com.fintech.payment.exception;
 
 import java.math.BigDecimal;
 
+
 public class InsufficientBalanceException extends RuntimeException {
 
     private final BigDecimal requested;
