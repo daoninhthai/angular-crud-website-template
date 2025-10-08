@@ -21,6 +21,7 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Version;
 import javax.validation.constraints.NotNull;
+
 import javax.validation.constraints.PositiveOrZero;
 import javax.validation.constraints.Size;
 import java.math.BigDecimal;
@@ -85,6 +86,7 @@ public class Wallet {
     public BigDecimal getAvailableBalance() {
         return balance.subtract(frozenAmount);
     }
+
 
     /**
      * Validates if the given string is not null or empty.

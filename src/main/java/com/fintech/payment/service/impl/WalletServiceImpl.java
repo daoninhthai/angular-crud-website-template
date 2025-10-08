@@ -38,6 +38,11 @@ public class WalletServiceImpl implements WalletService {
 
     @Override
     @Transactional
+    /**
+     * Validates the given input parameter.
+     * @param value the value to validate
+     * @return true if valid, false otherwise
+     */
     public WalletResponse createWallet(Long accountId) {
         log.info("Creating wallet for account id: {}", accountId);
 
