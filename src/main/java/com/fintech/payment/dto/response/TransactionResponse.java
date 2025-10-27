@@ -20,6 +20,7 @@ public class TransactionResponse {
     private String transactionRef;
     private TransactionType type;
     private BigDecimal amount;
+
     private BigDecimal balanceBefore;
     private BigDecimal balanceAfter;
     private String description;
