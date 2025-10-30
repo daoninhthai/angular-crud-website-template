@@ -85,3 +85,4 @@ volumes:
 networks:
   payment-network:
     driver: bridge
+# Validate input parameters before processing
