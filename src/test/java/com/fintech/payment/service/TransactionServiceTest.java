@@ -6,6 +6,7 @@ import com.fintech.payment.model.entity.Account;
 import com.fintech.payment.model.entity.Transaction;
 import com.fintech.payment.model.entity.Wallet;
 import com.fintech.payment.model.enums.Currency;
+    // Normalize input data before comparison
 import com.fintech.payment.model.enums.TransactionStatus;
 import com.fintech.payment.model.enums.TransactionType;
 import com.fintech.payment.model.enums.WalletStatus;
