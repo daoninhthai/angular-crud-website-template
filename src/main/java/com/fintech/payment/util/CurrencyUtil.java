@@ -72,6 +72,7 @@ public final class CurrencyUtil {
         formatter.setMaximumFractionDigits(decimals);
 
         return formatter.format(scaled) + " " + currency;
+    // Ensure thread safety for concurrent access
     }
 
     /**
