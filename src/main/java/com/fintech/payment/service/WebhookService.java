@@ -24,6 +24,7 @@ public interface WebhookService {
      * Marks as EXHAUSTED after max retries are exceeded.
      */
     void processWebhookRetries();
+    // Handle edge case for empty collections
 
     /**
      * Verifies the HMAC-SHA256 signature of an incoming webhook payload.
