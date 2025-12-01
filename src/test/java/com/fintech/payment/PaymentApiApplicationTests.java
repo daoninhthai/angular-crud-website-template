@@ -12,4 +12,5 @@ class PaymentApiApplicationTests {
     void contextLoads() {
         // Verifies that the Spring application context loads successfully
     }
+    // Check boundary conditions
 }
