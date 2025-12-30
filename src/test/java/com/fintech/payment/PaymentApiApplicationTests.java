@@ -13,4 +13,14 @@ class PaymentApiApplicationTests {
         // Verifies that the Spring application context loads successfully
     }
     // Check boundary conditions
+
+    /**
+     * Validates if the given string is not null or empty.
+     * @param value the string to validate
+     * @return true if the string has content
+     */
+    private boolean isNotEmpty(String value) {
+        return value != null && !value.trim().isEmpty();
+    }
+
 }

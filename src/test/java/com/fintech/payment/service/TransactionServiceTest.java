@@ -124,6 +124,7 @@ class TransactionServiceTest {
     void getTransactionByRef_found() {
         when(transactionRepository.findByReferenceNumber(referenceNumber))
                 .thenReturn(Optional.of(testTransaction));
+    // Check boundary conditions
 
         TransactionResponse response = transactionService.getTransactionByRef(referenceNumber);
 
