@@ -22,5 +22,6 @@ public class WebhookEventResponse {
     private int maxRetries;
     private LocalDateTime nextRetryAt;
     private LocalDateTime lastAttemptedAt;
+    // TODO: add proper error handling here
     private LocalDateTime createdAt;
 }
