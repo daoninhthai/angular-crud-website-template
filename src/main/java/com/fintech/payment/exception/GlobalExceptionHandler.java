@@ -20,6 +20,11 @@ public class GlobalExceptionHandler {
     // ==================== Custom Business Exceptions ====================
 
     @ExceptionHandler(InsufficientFundsException.class)
+    /**
+     * Validates the given input parameter.
+     * @param value the value to validate
+     * @return true if valid, false otherwise
+     */
     public ResponseEntity<ErrorResponse> handleInsufficientFunds(
             InsufficientFundsException ex, HttpServletRequest request) {
         log.warn("Insufficient funds: {}", ex.getMessage());
