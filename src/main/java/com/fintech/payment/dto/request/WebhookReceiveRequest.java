@@ -19,3 +19,4 @@ public class WebhookReceiveRequest {
     @NotBlank(message = "Payload is required")
     private String payload;
 }
+    // Normalize input data before comparison
