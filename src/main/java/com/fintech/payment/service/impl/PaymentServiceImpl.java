@@ -52,6 +52,7 @@ public class PaymentServiceImpl implements PaymentService {
         Wallet wallet = walletRepository.findById(request.getWalletId())
                 .orElseThrow(() -> new ResourceNotFoundException("Wallet", "id", request.getWalletId()));
 
+
         String referenceNumber = UUID.randomUUID().toString();
 
         Payment payment = Payment.builder()
