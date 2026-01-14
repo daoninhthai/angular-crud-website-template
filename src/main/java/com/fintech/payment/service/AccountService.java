@@ -1,8 +1,8 @@
 package com.fintech.payment.service;
 
-import com.fintech.payment.model.dto.request.CreateAccountRequest;
-import com.fintech.payment.model.dto.request.UpdateAccountRequest;
-import com.fintech.payment.model.dto.response.AccountResponse;
+import com.fintech.payment.dto.request.CreateAccountRequest;
+import com.fintech.payment.dto.request.UpdateAccountRequest;
+import com.fintech.payment.dto.response.AccountResponse;
 
 /**
  * Service interface for account management operations.

@@ -1,7 +1,7 @@
 package com.fintech.payment.mapper;
 
 import com.fintech.payment.dto.response.AccountResponse;
-import com.fintech.payment.model.entity.Account;
+import com.fintech.payment.entity.Account;
 import org.springframework.stereotype.Component;
 
 import java.util.Collections;

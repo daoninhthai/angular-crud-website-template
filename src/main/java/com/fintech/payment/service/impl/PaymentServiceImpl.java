@@ -2,14 +2,14 @@ package com.fintech.payment.service.impl;
 
 import com.fintech.payment.exception.InvalidOperationException;
 import com.fintech.payment.exception.ResourceNotFoundException;
-import com.fintech.payment.model.dto.request.CreatePaymentRequest;
-import com.fintech.payment.model.dto.request.RefundRequest;
-import com.fintech.payment.model.dto.response.PaymentResponse;
-import com.fintech.payment.model.entity.Payment;
-import com.fintech.payment.model.entity.Transaction;
-import com.fintech.payment.model.entity.Wallet;
-import com.fintech.payment.model.enums.PaymentStatus;
-import com.fintech.payment.model.enums.TransactionType;
+import com.fintech.payment.dto.request.CreatePaymentRequest;
+import com.fintech.payment.dto.request.RefundRequest;
+import com.fintech.payment.dto.response.PaymentResponse;
+import com.fintech.payment.entity.Payment;
+import com.fintech.payment.entity.Transaction;
+import com.fintech.payment.entity.Wallet;
+import com.fintech.payment.enums.PaymentStatus;
+import com.fintech.payment.enums.TransactionType;
 import com.fintech.payment.repository.PaymentRepository;
 import com.fintech.payment.repository.WalletRepository;
 import com.fintech.payment.service.*;
@@ -55,7 +55,7 @@ public class PaymentServiceImpl implements PaymentService {
         String referenceNumber = UUID.randomUUID().toString();
 
         Payment payment = Payment.builder()
-                .referenceNumber(referenceNumber)
+                .paymentRef(referenceNumber)
                 .wallet(wallet)
                 .amount(request.getAmount())
                 .refundedAmount(BigDecimal.ZERO)

@@ -3,14 +3,14 @@ package com.fintech.payment.service.impl;
 import com.fintech.payment.exception.InsufficientBalanceException;
 import com.fintech.payment.exception.InvalidOperationException;
 import com.fintech.payment.exception.ResourceNotFoundException;
-import com.fintech.payment.model.dto.response.TransferResponse;
-import com.fintech.payment.model.entity.Account;
-import com.fintech.payment.model.entity.Transaction;
-import com.fintech.payment.model.entity.Transfer;
-import com.fintech.payment.model.entity.Wallet;
-import com.fintech.payment.model.enums.AccountStatus;
-import com.fintech.payment.model.enums.TransactionType;
-import com.fintech.payment.model.enums.TransferStatus;
+import com.fintech.payment.dto.response.TransferResponse;
+import com.fintech.payment.entity.Account;
+import com.fintech.payment.entity.Transaction;
+import com.fintech.payment.entity.Transfer;
+import com.fintech.payment.entity.Wallet;
+import com.fintech.payment.enums.AccountStatus;
+import com.fintech.payment.enums.TransactionType;
+import com.fintech.payment.enums.TransferStatus;
 import com.fintech.payment.repository.AccountRepository;
 import com.fintech.payment.repository.TransferRepository;
 import com.fintech.payment.repository.WalletRepository;
@@ -83,19 +83,22 @@ public class TransferServiceImpl implements TransferService {
         Wallet destWallet = walletRepository.findByAccountId(destAccount.getId())
                 .orElseThrow(() -> new ResourceNotFoundException("Wallet", "accountId", destAccount.getId()));
 
+        final Long sourceWalletId = sourceWallet.getId();
+        final Long destWalletId = destWallet.getId();
+
         Wallet firstLock, secondLock;
-        if (sourceWallet.getId() < destWallet.getId()) {
-            firstLock = walletRepository.findByIdWithPessimisticLock(sourceWallet.getId())
-                    .orElseThrow(() -> new ResourceNotFoundException("Wallet", "id", sourceWallet.getId()));
-            secondLock = walletRepository.findByIdWithPessimisticLock(destWallet.getId())
-                    .orElseThrow(() -> new ResourceNotFoundException("Wallet", "id", destWallet.getId()));
+        if (sourceWalletId < destWalletId) {
+            firstLock = walletRepository.findByIdWithPessimisticLock(sourceWalletId)
+                    .orElseThrow(() -> new ResourceNotFoundException("Wallet", "id", sourceWalletId));
+            secondLock = walletRepository.findByIdWithPessimisticLock(destWalletId)
+                    .orElseThrow(() -> new ResourceNotFoundException("Wallet", "id", destWalletId));
             sourceWallet = firstLock;
             destWallet = secondLock;
         } else {
-            firstLock = walletRepository.findByIdWithPessimisticLock(destWallet.getId())
-                    .orElseThrow(() -> new ResourceNotFoundException("Wallet", "id", destWallet.getId()));
-            secondLock = walletRepository.findByIdWithPessimisticLock(sourceWallet.getId())
-                    .orElseThrow(() -> new ResourceNotFoundException("Wallet", "id", sourceWallet.getId()));
+            firstLock = walletRepository.findByIdWithPessimisticLock(destWalletId)
+                    .orElseThrow(() -> new ResourceNotFoundException("Wallet", "id", destWalletId));
+            secondLock = walletRepository.findByIdWithPessimisticLock(sourceWalletId)
+                    .orElseThrow(() -> new ResourceNotFoundException("Wallet", "id", sourceWalletId));
             destWallet = firstLock;
             sourceWallet = secondLock;
         }
@@ -145,7 +148,7 @@ public class TransferServiceImpl implements TransferService {
         // Create transfer record
         String referenceNumber = UUID.randomUUID().toString();
         Transfer transfer = Transfer.builder()
-                .referenceNumber(referenceNumber)
+                .transferRef(referenceNumber)
                 .sourceAccount(sourceAccount)
                 .destinationAccount(destAccount)
                 .amount(amount)

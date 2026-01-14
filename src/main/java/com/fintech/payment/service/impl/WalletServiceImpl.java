@@ -3,13 +3,13 @@ package com.fintech.payment.service.impl;
 import com.fintech.payment.exception.InsufficientBalanceException;
 import com.fintech.payment.exception.InvalidOperationException;
 import com.fintech.payment.exception.ResourceNotFoundException;
-import com.fintech.payment.model.dto.response.BalanceResponse;
-import com.fintech.payment.model.dto.response.WalletResponse;
-import com.fintech.payment.model.entity.Account;
-import com.fintech.payment.model.entity.Transaction;
-import com.fintech.payment.model.entity.Wallet;
-import com.fintech.payment.model.enums.TransactionType;
-import com.fintech.payment.model.enums.WalletStatus;
+import com.fintech.payment.dto.response.BalanceResponse;
+import com.fintech.payment.dto.response.WalletResponse;
+import com.fintech.payment.entity.Account;
+import com.fintech.payment.entity.Transaction;
+import com.fintech.payment.entity.Wallet;
+import com.fintech.payment.enums.TransactionType;
+import com.fintech.payment.enums.WalletStatus;
 import com.fintech.payment.repository.AccountRepository;
 import com.fintech.payment.repository.WalletRepository;
 import com.fintech.payment.service.NotificationService;
@@ -57,7 +57,7 @@ public class WalletServiceImpl implements WalletService {
                 .account(account)
                 .balance(BigDecimal.ZERO)
                 .frozenAmount(BigDecimal.ZERO)
-                .currency(account.getCurrency())
+                .currency(account.getCurrency() != null ? account.getCurrency().getCode() : "VND")
                 .status(WalletStatus.ACTIVE)
                 .build();
 

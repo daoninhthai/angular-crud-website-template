@@ -1,8 +1,8 @@
 package com.fintech.payment.service;
 
-import com.fintech.payment.model.entity.Payment;
-import com.fintech.payment.model.entity.Transaction;
-import com.fintech.payment.model.entity.Transfer;
+import com.fintech.payment.entity.Payment;
+import com.fintech.payment.entity.Transaction;
+import com.fintech.payment.entity.Transfer;
 
 /**
  * Service interface for sending notification events via Kafka.

@@ -1,8 +1,8 @@
 package com.fintech.payment.controller;
 
-import com.fintech.payment.model.dto.request.TransferRequest;
-import com.fintech.payment.model.dto.response.ApiResponse;
-import com.fintech.payment.model.dto.response.TransferResponse;
+import com.fintech.payment.dto.request.TransferRequest;
+import com.fintech.payment.dto.response.ApiResponse;
+import com.fintech.payment.dto.response.TransferResponse;
 import com.fintech.payment.service.TransferService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

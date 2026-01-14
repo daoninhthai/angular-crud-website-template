@@ -16,6 +16,14 @@ public interface TransferRepository extends JpaRepository<Transfer, Long> {
 
     Optional<Transfer> findByTransferRef(String transferRef);
 
+    default Optional<Transfer> findByReferenceNumber(String referenceNumber) {
+        return findByTransferRef(referenceNumber);
+    }
+
+    @Query("SELECT t FROM Transfer t WHERE t.sourceAccount.id = :accountId " +
+            "OR t.destinationAccount.id = :accountId ORDER BY t.createdAt DESC")
+    Page<Transfer> findByAccountId(@Param("accountId") Long accountId, Pageable pageable);
+
     @Query("SELECT t FROM Transfer t WHERE t.fromWallet.id = :walletId " +
             "OR t.toWallet.id = :walletId ORDER BY t.createdAt DESC")
     Page<Transfer> findByFromWalletIdOrToWalletId(

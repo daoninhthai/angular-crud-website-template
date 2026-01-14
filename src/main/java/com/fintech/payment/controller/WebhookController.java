@@ -2,11 +2,11 @@ package com.fintech.payment.controller;
 
 import com.fintech.payment.exception.ResourceNotFoundException;
 import com.fintech.payment.exception.WebhookSignatureException;
-import com.fintech.payment.model.dto.request.WebhookReceiveRequest;
-import com.fintech.payment.model.dto.response.ApiResponse;
-import com.fintech.payment.model.dto.response.WebhookEventResponse;
-import com.fintech.payment.model.entity.WebhookEvent;
-import com.fintech.payment.model.enums.WebhookStatus;
+import com.fintech.payment.dto.request.WebhookReceiveRequest;
+import com.fintech.payment.dto.response.ApiResponse;
+import com.fintech.payment.dto.response.WebhookEventResponse;
+import com.fintech.payment.entity.WebhookEvent;
+import com.fintech.payment.enums.WebhookStatus;
 import com.fintech.payment.repository.WebhookEventRepository;
 import com.fintech.payment.service.WebhookService;
 import lombok.RequiredArgsConstructor;

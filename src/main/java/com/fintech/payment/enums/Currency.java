@@ -1,10 +1,5 @@
 package com.fintech.payment.enums;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-
-@Getter
-@AllArgsConstructor
 public enum Currency {
 
     VND("VND", "Vietnamese Dong", "\u20AB"),
@@ -14,6 +9,16 @@ public enum Currency {
     private final String code;
     private final String displayName;
     private final String symbol;
+
+    Currency(String code, String displayName, String symbol) {
+        this.code = code;
+        this.displayName = displayName;
+        this.symbol = symbol;
+    }
+
+    public String getCode() { return code; }
+    public String getDisplayName() { return displayName; }
+    public String getSymbol() { return symbol; }
 
     /**
      * Find a Currency enum by its ISO currency code.

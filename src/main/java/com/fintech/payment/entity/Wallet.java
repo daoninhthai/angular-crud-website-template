@@ -1,5 +1,6 @@
 package com.fintech.payment.entity;
 
+import com.fintech.payment.enums.WalletStatus;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -19,6 +20,8 @@ import javax.persistence.Index;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.Version;
 import javax.validation.constraints.NotNull;
 
@@ -64,6 +67,11 @@ public class Wallet {
     @Column(name = "frozen_amount", nullable = false, precision = 19, scale = 4)
     @Builder.Default
     private BigDecimal frozenAmount = BigDecimal.ZERO;
+
+    @Enumerated(EnumType.STRING)
+    @Column(name = "status", length = 20)
+    @Builder.Default
+    private WalletStatus status = WalletStatus.ACTIVE;
 
     @Version
     @Column(name = "version")

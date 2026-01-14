@@ -3,14 +3,14 @@ package com.fintech.payment.service.impl;
 import com.fintech.payment.exception.DuplicateResourceException;
 import com.fintech.payment.exception.InvalidOperationException;
 import com.fintech.payment.exception.ResourceNotFoundException;
-import com.fintech.payment.model.dto.request.CreateAccountRequest;
-import com.fintech.payment.model.dto.request.UpdateAccountRequest;
-import com.fintech.payment.model.dto.response.AccountResponse;
-import com.fintech.payment.model.entity.Account;
-import com.fintech.payment.model.entity.Wallet;
-import com.fintech.payment.model.enums.AccountStatus;
-import com.fintech.payment.model.enums.Currency;
-import com.fintech.payment.model.enums.WalletStatus;
+import com.fintech.payment.dto.request.CreateAccountRequest;
+import com.fintech.payment.dto.request.UpdateAccountRequest;
+import com.fintech.payment.dto.response.AccountResponse;
+import com.fintech.payment.entity.Account;
+import com.fintech.payment.entity.Wallet;
+import com.fintech.payment.enums.AccountStatus;
+import com.fintech.payment.enums.Currency;
+import com.fintech.payment.enums.WalletStatus;
 import com.fintech.payment.repository.AccountRepository;
 import com.fintech.payment.repository.WalletRepository;
 import com.fintech.payment.service.AccountService;
@@ -68,7 +68,7 @@ public class AccountServiceImpl implements AccountService {
                 .account(account)
                 .balance(BigDecimal.ZERO)
                 .frozenAmount(BigDecimal.ZERO)
-                .currency(currency)
+                .currency(currency.getCode())
                 .status(WalletStatus.ACTIVE)
                 .build();
 

@@ -1,8 +1,8 @@
 package com.fintech.payment.security;
 
 import com.fintech.payment.exception.AccountNotFoundException;
-import com.fintech.payment.model.entity.Account;
-import com.fintech.payment.model.enums.AccountStatus;
+import com.fintech.payment.entity.Account;
+import com.fintech.payment.enums.AccountStatus;
 import com.fintech.payment.repository.AccountRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

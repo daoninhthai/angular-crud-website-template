@@ -1,8 +1,8 @@
 package com.fintech.payment.service.impl;
 
-import com.fintech.payment.model.entity.Payment;
-import com.fintech.payment.model.entity.Transaction;
-import com.fintech.payment.model.entity.Transfer;
+import com.fintech.payment.entity.Payment;
+import com.fintech.payment.entity.Transaction;
+import com.fintech.payment.entity.Transfer;
 import com.fintech.payment.service.NotificationService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -31,7 +31,7 @@ public class NotificationServiceImpl implements NotificationService {
     public void sendTransactionNotification(Transaction transaction) {
         try {
             String formattedAmount = formatAmount(
-                    transaction.getAmount(), transaction.getCurrency().name());
+                    transaction.getAmount(), transaction.getCurrency());
 
             String event = String.format(
                     "{\"notificationType\":\"TRANSACTION\"," +
@@ -73,7 +73,7 @@ public class NotificationServiceImpl implements NotificationService {
     public void sendTransferNotification(Transfer transfer) {
         try {
             String formattedAmount = formatAmount(
-                    transfer.getAmount(), transfer.getCurrency().name());
+                    transfer.getAmount(), transfer.getCurrency());
 
             // Notification for the sender
             String senderEvent = String.format(
@@ -144,7 +144,7 @@ public class NotificationServiceImpl implements NotificationService {
     public void sendPaymentNotification(Payment payment) {
         try {
             String formattedAmount = formatAmount(
-                    payment.getAmount(), payment.getCurrency().name());
+                    payment.getAmount(), payment.getCurrency());
 
             String event = String.format(
                     "{\"notificationType\":\"PAYMENT\"," +

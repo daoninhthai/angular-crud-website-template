@@ -1,24 +1,18 @@
 package com.fintech.payment.dto.request;
 
-import com.fintech.payment.enums.Currency;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.validation.constraints.Email;
-import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
 @Data
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class CreateAccountRequest {
-
-    @NotBlank(message = "Full name is required")
-    @Size(max = 200, message = "Full name must not exceed 200 characters")
-    private String fullName;
+public class UpdateAccountRequest {
 
     @Size(max = 100, message = "First name must not exceed 100 characters")
     private String firstName;
@@ -26,19 +20,9 @@ public class CreateAccountRequest {
     @Size(max = 100, message = "Last name must not exceed 100 characters")
     private String lastName;
 
-    @NotBlank(message = "Email is required")
     @Email(message = "Email must be a valid email address")
     private String email;
 
     @Size(max = 20, message = "Phone number must not exceed 20 characters")
-    private String phone;
-
-    @Size(max = 20, message = "Phone number must not exceed 20 characters")
     private String phoneNumber;
-
-    @NotBlank(message = "Password is required")
-    @Size(min = 8, max = 128, message = "Password must be between 8 and 128 characters")
-    private String password;
-
-    private Currency currency;
 }

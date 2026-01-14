@@ -1,9 +1,9 @@
 package com.fintech.payment.controller;
 
-import com.fintech.payment.model.dto.request.CreateAccountRequest;
-import com.fintech.payment.model.dto.request.UpdateAccountRequest;
-import com.fintech.payment.model.dto.response.AccountResponse;
-import com.fintech.payment.model.dto.response.ApiResponse;
+import com.fintech.payment.dto.request.CreateAccountRequest;
+import com.fintech.payment.dto.request.UpdateAccountRequest;
+import com.fintech.payment.dto.response.AccountResponse;
+import com.fintech.payment.dto.response.ApiResponse;
 import com.fintech.payment.service.AccountService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

@@ -1,8 +1,8 @@
 package com.fintech.payment.service;
 
-import com.fintech.payment.model.dto.response.TransactionResponse;
-import com.fintech.payment.model.entity.Transaction;
-import com.fintech.payment.model.enums.TransactionType;
+import com.fintech.payment.dto.response.TransactionResponse;
+import com.fintech.payment.entity.Transaction;
+import com.fintech.payment.enums.TransactionType;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;

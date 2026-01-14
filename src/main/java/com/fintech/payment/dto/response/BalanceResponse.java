@@ -1,28 +1,21 @@
 package com.fintech.payment.dto.response;
 
-import com.fintech.payment.enums.WalletStatus;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.math.BigDecimal;
-import java.time.LocalDateTime;
 
 @Data
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class WalletResponse {
+public class BalanceResponse {
 
-    private Long id;
-    private Long accountId;
-    private String accountNumber;
-    private BigDecimal balance;
+    private Long walletId;
+    private BigDecimal totalBalance;
     private BigDecimal availableBalance;
     private BigDecimal frozenAmount;
     private String currency;
-    private WalletStatus status;
-    private LocalDateTime createdAt;
-    private LocalDateTime updatedAt;
 }

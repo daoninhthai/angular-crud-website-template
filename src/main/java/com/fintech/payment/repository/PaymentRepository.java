@@ -18,7 +18,13 @@ public interface PaymentRepository extends JpaRepository<Payment, Long> {
 
     Optional<Payment> findByPaymentRef(String paymentRef);
 
+    default Optional<Payment> findByReferenceNumber(String referenceNumber) {
+        return findByPaymentRef(referenceNumber);
+    }
+
     Page<Payment> findByWalletId(Long walletId, Pageable pageable);
+
+    Page<Payment> findByWalletIdOrderByCreatedAtDesc(Long walletId, Pageable pageable);
 
     Optional<Payment> findByIdempotencyKey(String idempotencyKey);
 

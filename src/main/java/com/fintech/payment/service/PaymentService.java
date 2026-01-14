@@ -1,8 +1,8 @@
 package com.fintech.payment.service;
 
-import com.fintech.payment.model.dto.request.CreatePaymentRequest;
-import com.fintech.payment.model.dto.request.RefundRequest;
-import com.fintech.payment.model.dto.response.PaymentResponse;
+import com.fintech.payment.dto.request.CreatePaymentRequest;
+import com.fintech.payment.dto.request.RefundRequest;
+import com.fintech.payment.dto.response.PaymentResponse;
 import org.springframework.data.domain.Page;
 
 import org.springframework.data.domain.Pageable;

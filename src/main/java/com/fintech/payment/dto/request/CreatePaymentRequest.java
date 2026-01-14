@@ -18,6 +18,9 @@ import java.math.BigDecimal;
 @AllArgsConstructor
 public class CreatePaymentRequest {
 
+    @NotNull(message = "Wallet ID is required")
+    private Long walletId;
+
     @NotNull(message = "Amount is required")
     @Positive(message = "Amount must be positive")
     private BigDecimal amount;
@@ -39,4 +42,10 @@ public class CreatePaymentRequest {
 
     @Size(max = 500, message = "Webhook URL must not exceed 500 characters")
     private String webhookUrl;
+
+    @Size(max = 100, message = "Merchant reference must not exceed 100 characters")
+    private String merchantReference;
+
+    @Size(max = 2000, message = "Metadata must not exceed 2000 characters")
+    private String metadata;
 }

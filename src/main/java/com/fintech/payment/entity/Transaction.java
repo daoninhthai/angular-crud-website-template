@@ -52,6 +52,17 @@ public class Transaction {
     @Column(name = "transaction_ref", nullable = false, unique = true, length = 36)
     private String transactionRef;
 
+    /**
+     * Alias for transactionRef used by service layer.
+     */
+    public String getReferenceNumber() {
+        return transactionRef;
+    }
+
+    public void setReferenceNumber(String referenceNumber) {
+        this.transactionRef = referenceNumber;
+    }
+
     @NotNull(message = "Wallet is required")
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "wallet_id", nullable = false)
@@ -86,6 +97,12 @@ public class Transaction {
 
     @Column(name = "idempotency_key", length = 64)
     private String idempotencyKey;
+
+    @Column(name = "currency", length = 3)
+    private String currency;
+
+    @Column(name = "counterparty_wallet_id")
+    private Long counterpartyWalletId;
 
     @Column(name = "metadata", columnDefinition = "TEXT")
     private String metadata;

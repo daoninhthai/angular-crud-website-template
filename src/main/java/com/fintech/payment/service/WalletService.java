@@ -1,8 +1,8 @@
 package com.fintech.payment.service;
 
-import com.fintech.payment.model.dto.response.BalanceResponse;
-import com.fintech.payment.model.dto.response.WalletResponse;
-import com.fintech.payment.model.entity.Wallet;
+import com.fintech.payment.dto.response.BalanceResponse;
+import com.fintech.payment.dto.response.WalletResponse;
+import com.fintech.payment.entity.Wallet;
 
 import java.math.BigDecimal;
 

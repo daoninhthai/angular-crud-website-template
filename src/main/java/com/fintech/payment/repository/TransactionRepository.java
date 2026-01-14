@@ -1,8 +1,8 @@
 package com.fintech.payment.repository;
 
-import com.fintech.payment.model.entity.Transaction;
-import com.fintech.payment.model.enums.TransactionStatus;
-import com.fintech.payment.model.enums.TransactionType;
+import com.fintech.payment.entity.Transaction;
+import com.fintech.payment.enums.TransactionStatus;
+import com.fintech.payment.enums.TransactionType;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -17,7 +17,8 @@ import java.util.Optional;
 @Repository
 public interface TransactionRepository extends JpaRepository<Transaction, Long> {
 
-    Optional<Transaction> findByReferenceNumber(String referenceNumber);
+    @Query("SELECT t FROM Transaction t WHERE t.transactionRef = :referenceNumber")
+    Optional<Transaction> findByReferenceNumber(@Param("referenceNumber") String referenceNumber);
 
     Optional<Transaction> findByIdempotencyKey(String idempotencyKey);
 

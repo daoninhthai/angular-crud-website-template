@@ -1,6 +1,6 @@
 package com.fintech.payment.service;
 
-import com.fintech.payment.model.dto.response.TransferResponse;
+import com.fintech.payment.dto.response.TransferResponse;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 

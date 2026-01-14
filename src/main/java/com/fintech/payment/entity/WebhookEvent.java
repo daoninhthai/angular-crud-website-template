@@ -64,6 +64,15 @@ public class WebhookEvent {
     @Builder.Default
     private WebhookStatus status = WebhookStatus.PENDING;
 
+    @Column(name = "secret_key", length = 255)
+    private String secretKey;
+
+    @Column(name = "http_status_code")
+    private Integer httpStatusCode;
+
+    @Column(name = "response_body", columnDefinition = "TEXT")
+    private String responseBody;
+
     @PositiveOrZero(message = "Retry count must be zero or positive")
     @Column(name = "retry_count", nullable = false)
     @Builder.Default
@@ -75,6 +84,9 @@ public class WebhookEvent {
 
     @Column(name = "last_attempt_at")
     private LocalDateTime lastAttemptAt;
+
+    @Column(name = "last_attempted_at")
+    private LocalDateTime lastAttemptedAt;
 
     @Column(name = "next_retry_at")
     private LocalDateTime nextRetryAt;

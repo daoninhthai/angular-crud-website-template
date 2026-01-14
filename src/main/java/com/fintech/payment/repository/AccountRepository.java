@@ -1,7 +1,7 @@
 package com.fintech.payment.repository;
 
-import com.fintech.payment.model.entity.Account;
-import com.fintech.payment.model.enums.AccountStatus;
+import com.fintech.payment.entity.Account;
+import com.fintech.payment.enums.AccountStatus;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;

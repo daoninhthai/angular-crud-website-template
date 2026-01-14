@@ -1,11 +1,11 @@
 package com.fintech.payment.service.impl;
 
 import com.fintech.payment.exception.ResourceNotFoundException;
-import com.fintech.payment.model.dto.response.TransactionResponse;
-import com.fintech.payment.model.entity.Transaction;
-import com.fintech.payment.model.entity.Wallet;
-import com.fintech.payment.model.enums.TransactionStatus;
-import com.fintech.payment.model.enums.TransactionType;
+import com.fintech.payment.dto.response.TransactionResponse;
+import com.fintech.payment.entity.Transaction;
+import com.fintech.payment.entity.Wallet;
+import com.fintech.payment.enums.TransactionStatus;
+import com.fintech.payment.enums.TransactionType;
 import com.fintech.payment.repository.TransactionRepository;
 import com.fintech.payment.repository.WalletRepository;
 import com.fintech.payment.service.TransactionService;
@@ -53,7 +53,7 @@ public class TransactionServiceImpl implements TransactionService {
         String referenceNumber = UUID.randomUUID().toString();
 
         Transaction transaction = Transaction.builder()
-                .referenceNumber(referenceNumber)
+                .transactionRef(referenceNumber)
                 .wallet(wallet)
                 .type(type)
                 .status(TransactionStatus.COMPLETED)

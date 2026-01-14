@@ -1,7 +1,7 @@
 package com.fintech.payment.service.impl;
 
-import com.fintech.payment.model.entity.WebhookEvent;
-import com.fintech.payment.model.enums.WebhookStatus;
+import com.fintech.payment.entity.WebhookEvent;
+import com.fintech.payment.enums.WebhookStatus;
 import com.fintech.payment.repository.WebhookEventRepository;
 import com.fintech.payment.service.WebhookService;
 import lombok.RequiredArgsConstructor;
@@ -21,7 +21,6 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.time.LocalDateTime;
 import java.util.Arrays;
-import java.util.HexFormat;
 import java.util.List;
 
 @Slf4j

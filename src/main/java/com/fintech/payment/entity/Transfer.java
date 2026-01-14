@@ -22,6 +22,7 @@ import javax.persistence.Index;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Positive;
@@ -54,6 +55,17 @@ public class Transfer {
     @Column(name = "transfer_ref", nullable = false, unique = true, length = 36)
     private String transferRef;
 
+    /**
+     * Alias for transferRef used by service layer.
+     */
+    public String getReferenceNumber() {
+        return transferRef;
+    }
+
+    public void setReferenceNumber(String referenceNumber) {
+        this.transferRef = referenceNumber;
+    }
+
     @NotNull(message = "Source wallet is required")
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "from_wallet_id", nullable = false)
@@ -63,6 +75,14 @@ public class Transfer {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "to_wallet_id", nullable = false)
     private Wallet toWallet;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "source_account_id")
+    private Account sourceAccount;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "destination_account_id")
+    private Account destinationAccount;
 
     @NotNull(message = "Amount is required")
     @Positive(message = "Amount must be positive")
@@ -88,6 +108,15 @@ public class Transfer {
     @Column(name = "status", nullable = false, length = 20)
     @Builder.Default
     private TransferStatus status = TransferStatus.PENDING;
+
+    @Column(name = "source_transaction_ref", length = 36)
+    private String sourceTransactionRef;
+
+    @Column(name = "destination_transaction_ref", length = 36)
+    private String destinationTransactionRef;
+
+    @Column(name = "failure_reason", length = 500)
+    private String failureReason;
 
     @Column(name = "idempotency_key", length = 64)
     private String idempotencyKey;

@@ -2,6 +2,7 @@ package com.fintech.payment.entity;
 
 import com.fintech.payment.enums.AccountRole;
 import com.fintech.payment.enums.AccountStatus;
+import com.fintech.payment.enums.Currency;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -53,6 +54,12 @@ public class Account {
     @Column(name = "full_name", nullable = false, length = 150)
     private String fullName;
 
+    @Column(name = "first_name", length = 100)
+    private String firstName;
+
+    @Column(name = "last_name", length = 100)
+    private String lastName;
+
     @NotBlank(message = "Email is required")
     @Email(message = "Email must be a valid email address")
     @Column(name = "email", nullable = false, unique = true, length = 255)
@@ -61,6 +68,9 @@ public class Account {
     @Pattern(regexp = "^\\+?[1-9]\\d{1,14}$", message = "Phone number must be in E.164 format")
     @Column(name = "phone", length = 20)
     private String phone;
+
+    @Column(name = "phone_number", length = 20)
+    private String phoneNumber;
 
     @NotBlank(message = "Password hash is required")
     @Column(name = "password_hash", nullable = false, length = 255)
@@ -78,9 +88,13 @@ public class Account {
     @Builder.Default
     private AccountStatus status = AccountStatus.ACTIVE;
 
+    @Enumerated(EnumType.STRING)
+    @Column(name = "currency", length = 3)
+    private Currency currency;
+
     @Column(name = "kyc_verified", nullable = false)
     @Builder.Default
-    private boolean kycVerified = false;
+    private Boolean kycVerified = false;
 
     @CreatedDate
     @Column(name = "created_at", nullable = false, updatable = false)

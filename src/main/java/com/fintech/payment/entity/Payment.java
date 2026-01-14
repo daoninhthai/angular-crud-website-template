@@ -55,6 +55,17 @@ public class Payment {
     @Column(name = "payment_ref", nullable = false, unique = true, length = 36)
     private String paymentRef;
 
+    /**
+     * Alias for paymentRef used by service layer.
+     */
+    public String getReferenceNumber() {
+        return paymentRef;
+    }
+
+    public void setReferenceNumber(String referenceNumber) {
+        this.paymentRef = referenceNumber;
+    }
+
     @NotNull(message = "Wallet is required")
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "wallet_id", nullable = false)
@@ -95,6 +106,18 @@ public class Payment {
     @Column(name = "refunded_amount", nullable = false, precision = 19, scale = 4)
     @Builder.Default
     private BigDecimal refundedAmount = BigDecimal.ZERO;
+
+    @Column(name = "transaction_ref", length = 36)
+    private String transactionRef;
+
+    @Column(name = "failure_reason", length = 500)
+    private String failureReason;
+
+    @Column(name = "merchant_reference", length = 100)
+    private String merchantReference;
+
+    @Column(name = "metadata", columnDefinition = "TEXT")
+    private String metadata;
 
     @Column(name = "webhook_url", length = 500)
     private String webhookUrl;

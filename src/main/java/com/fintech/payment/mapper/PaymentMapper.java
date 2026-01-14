@@ -1,7 +1,7 @@
 package com.fintech.payment.mapper;
 
 import com.fintech.payment.dto.response.PaymentResponse;
-import com.fintech.payment.model.entity.Payment;
+import com.fintech.payment.entity.Payment;
 import org.springframework.stereotype.Component;
 
 import java.util.Collections;
@@ -23,7 +23,7 @@ public class PaymentMapper {
                 .id(payment.getId())
                 .paymentRef(payment.getReferenceNumber())
                 .amount(payment.getAmount())
-                .currency(payment.getCurrency() != null ? payment.getCurrency().name() : null)
+                .currency(payment.getCurrency())
                 .merchantName(payment.getMerchantName())
                 .status(payment.getStatus())
                 .refundedAmount(payment.getRefundedAmount())

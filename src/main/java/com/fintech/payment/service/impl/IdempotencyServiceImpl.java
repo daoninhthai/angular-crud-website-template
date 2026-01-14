@@ -1,7 +1,7 @@
 package com.fintech.payment.service.impl;
 
-import com.fintech.payment.model.entity.IdempotencyRecord;
-import com.fintech.payment.repository.IdempotencyRecordRepository;
+import com.fintech.payment.entity.IdempotencyKey;
+import com.fintech.payment.repository.IdempotencyKeyRepository;
 import com.fintech.payment.service.IdempotencyService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -23,7 +23,7 @@ public class IdempotencyServiceImpl implements IdempotencyService {
     private static final long DEFAULT_TTL_MINUTES = 1440; // 24 hours
 
     private final StringRedisTemplate redisTemplate;
-    private final IdempotencyRecordRepository idempotencyRecordRepository;
+    private final IdempotencyKeyRepository idempotencyRecordRepository;
 
     @Override
     public Optional<String> checkIdempotency(String key) {
@@ -45,9 +45,9 @@ public class IdempotencyServiceImpl implements IdempotencyService {
         }
 
         // Step 2: Fallback to database
-        Optional<IdempotencyRecord> dbRecord = idempotencyRecordRepository.findByIdempotencyKey(key);
+        Optional<IdempotencyKey> dbRecord = idempotencyRecordRepository.findByKeyValue(key);
         if (dbRecord.isPresent()) {
-            IdempotencyRecord record = dbRecord.get();
+            IdempotencyKey record = dbRecord.get();
 
             // Check if the record has expired
             if (record.getExpiresAt().isAfter(LocalDateTime.now())) {
@@ -88,8 +88,8 @@ public class IdempotencyServiceImpl implements IdempotencyService {
         }
 
         // Save to database for durability
-        IdempotencyRecord record = IdempotencyRecord.builder()
-                .idempotencyKey(key)
+        IdempotencyKey record = IdempotencyKey.builder()
+                .keyValue(key)
                 .responseBody(response)
                 .statusCode(statusCode)
                 .expiresAt(expiresAt)
@@ -112,7 +112,7 @@ public class IdempotencyServiceImpl implements IdempotencyService {
         log.info("Starting idempotency records cleanup");
 
         try {
-            int deletedCount = idempotencyRecordRepository.deleteExpiredRecords(LocalDateTime.now());
+            int deletedCount = idempotencyRecordRepository.deleteByExpiresAtBefore(LocalDateTime.now());
             log.info("Cleaned up {} expired idempotency records", deletedCount);
         } catch (Exception e) {
             log.error("Error during idempotency cleanup: {}", e.getMessage(), e);
